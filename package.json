@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/Hanufu/perguntas-e-respostas#readme",
   "dependencies": {
+    "body-parser": "^1.20.0",
     "ejs": "^3.1.8",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
   }
 }
