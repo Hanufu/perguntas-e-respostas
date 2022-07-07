@@ -1,21 +1,19 @@
 const express = require("express");
 const app = express();
 
+//setando engine, e arquivos estaticos
 app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
-app.get("/:nome/:lang", (req, res) =>{
-    
-    const nome = req.params.nome;
-    const lang = req.params.lang;
+//rotas
+app.get("/", (req, res)=>{
+    res.render("index")
+});
+app.get("/perguntar", (req, res)=>{
+    res.render('perguntar')
+});
 
-    res.render("index",{
-        nome: nome,
-        lang: lang,
-        empresa: "Group Inovale",
-        inscritos: 4000
-    });
-})
-
+//criando servidor
 app.listen(8080, ()=>{
     console.log("App rodando!");
 });
