@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 //setando engine, e arquivos estaticos
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
-
+//Body Parser
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -18,7 +18,9 @@ app.get("/perguntar", (req, res)=>{
 });
 
 app.post("/salvarpergunta",(req, res)=>{
-	res.send("Formulário recebido");
+	let titulo = req.body.titulo;
+	let descricao = req.body.descricao;
+	res.send(`Formulário recebido! Titulo: ${titulo} Descrição: ${descricao}`);
 });
 
 
