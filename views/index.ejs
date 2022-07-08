@@ -2,5 +2,15 @@
 <body>
     <%- include ('./partials/navbar.ejs'); %>
     <h1>Página inicial</h1>
+
+    <ul>
+        <% perguntas.forEach(function (perguntas){ %>
+            <li>
+                Titulo: <%= perguntas.titulo%> <br />
+                Descricao: <%= perguntas.descricao%> 
+            </li>
+            <br />
+        <%})%>
+    </ul>
 </body>
 <%- include ('./partials/footer.ejs'); %>
