@@ -53,15 +53,31 @@ app.get('/pergunta/:id', (req, res) =>{
         where: {id: id}
     }).then(pergunta =>{
         if(pergunta != undefined && pergunta != null){
-            res.render("pergunta",{
-                pergunta: pergunta
-            });
+            Resposta.findAll({
+                where: {perguntaId: pergunta.id}
+            }).then(respostas =>{
+                res.render("pergunta",{
+                    pergunta: pergunta,
+                    respostas: respostas
+                });
+            })
         }else{
             res.redirect("/");
         }
     });
 });
 
+app.post("/responder", (req, res)=>{
+    let corpo = req.body.corpo;
+    let perguntaId = req.body.pergunta;
+
+    Resposta.create({
+        corpo: corpo,
+        perguntaId: perguntaId
+    }).then(()=>{
+        res.redirect("/pergunta/"+perguntaId);
+    });
+});
 //criando servidor
 app.listen(8080, ()=>{
     console.log("App rodando!");
