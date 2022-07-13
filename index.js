@@ -6,7 +6,6 @@ const Pergunta = require("./database/Pergunta");
 const Resposta = require("./database/Resposta");
 //database
 
-
 connection.authenticate().then(() =>{
     console.log("Conexão feita com o banco de dados!");
 }).catch((msgErro)=>{
@@ -75,9 +74,10 @@ app.post("/responder", (req, res)=>{
         corpo: corpo,
         perguntaId: perguntaId
     }).then(()=>{
-        res.redirect("/pergunta/"+perguntaId);
-    });
+        res.redirect(`pergunta/${perguntaId}`);
+    })
 });
+
 //criando servidor
 app.listen(8080, ()=>{
     console.log("App rodando!");
